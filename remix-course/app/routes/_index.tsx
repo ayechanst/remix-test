@@ -1,4 +1,5 @@
 import { Link } from '@remix-run/react';
+import homeStyles from './styles/home.css';
 
 export default function Index() {
   return (
@@ -12,4 +13,6 @@ export default function Index() {
   );
 }
 
-// lecture at 30:30
+export function links() {
+  return [{ rel: 'stylesheet', href: homeStyles }];
+}
