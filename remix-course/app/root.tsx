@@ -10,6 +10,7 @@ import {
 } from '@remix-run/react';
 
 import styles from './styles/main.css';
+import { MainNavigation } from '~/components/MainNavigation';
 
 // This root file wraps all other routes
 
@@ -23,6 +24,9 @@ export default function App() {
         <Links />
       </head>
       <body>
+        <header>
+          <MainNavigation />
+        </header>
         <Outlet />
         {/* everything is auto inserted into outlet */}
         <ScrollRestoration />
