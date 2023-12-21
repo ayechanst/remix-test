@@ -1,9 +1,10 @@
 import styles from './NewNote.css';
+import { Form } from '@remix-run/react';
 
 function NewNote() {
-  console.log('new note works');
+  // <Form></Form> is special remix form
   return (
-    <form method="post" id="note-form">
+    <Form method="post" id="note-form">
       {/* this returns an object of the submitted form, and sends it to our backend stuff */}
       <p>
         <label htmlFor="title">Title</label>
@@ -16,7 +17,7 @@ function NewNote() {
       <div className="form-actions">
         <button>Add Note</button>
       </div>
-    </form>
+    </Form>
   );
 }
 

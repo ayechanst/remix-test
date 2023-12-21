@@ -1,14 +1,24 @@
+import { redirect } from '@remix-run/node';
+import { useLoaderData } from '@remix-run/react';
 import NewNote from '~/components/NewNote';
 import newNoteStyles from '~/components/NewNote.css';
+import NoteList, { links as noteListLinks } from '~/components/NoteList';
 import { getStoredNotes, storeNotes } from '~/data/notes';
-import { redirect } from '@remix-run/node';
 
 export default function NotesPage() {
+  const notes = useLoaderData();
   return (
     <main>
       <NewNote />
+      <NoteList notes={notes} />
     </main>
   );
+}
+
+// another reserved name, MUST USE
+export async function loader() {
+  const notes = await getStoredNotes();
+  return notes;
 }
 
 // This --action-- function is a reserved name for when --method="post"-- is used in NewNote.tsx (just like links())
@@ -29,5 +39,9 @@ export async function action({ request }) {
 }
 
 export function links() {
-  return [{ rel: 'stylesheet', href: newNoteStyles }];
+  return [{ rel: 'stylesheet', href: newNoteStyles }, ...noteListLinks()];
 }
+
+// export function links() {
+//   return [...newNoteLinks(), ...noteListLinks()];
+// }
