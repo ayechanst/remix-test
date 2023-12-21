@@ -1,6 +1,7 @@
 import styles from './NewNote.css';
 
 function NewNote() {
+  console.log('new note works');
   return (
     <form method="post" id="note-form">
       {/* this returns an object of the submitted form, and sends it to our backend stuff */}

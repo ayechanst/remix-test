@@ -14,13 +14,14 @@ export default function NotesPage() {
 // This --action-- function is a reserved name for when --method="post"-- is used in NewNote.tsx (just like links())
 // This function is on the backend, this will not load for the user
 export async function action({ request }) {
+  console.log('action func works');
   const formData = await request.formData();
   const noteData = {
     title: formData.get('title'),
     content: formData.get('content'),
   };
   const existingNotes = await getStoredNotes();
-  console.log(typeof existingNotes);
+  console.log(existingNotes, typeof existingNotes);
   noteData.id = new Date().toISOString();
   const updatedNotes = existingNotes.concat(noteData);
   await storeNotes(updatedNotes);
