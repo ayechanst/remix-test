@@ -9,8 +9,8 @@ import {
   ScrollRestoration,
 } from '@remix-run/react';
 
+import MainNavigation from '~/components/MainNavigation';
 import styles from './styles/main.css';
-import { MainNavigation } from '~/components/MainNavigation';
 
 // This root file wraps all other routes
 
